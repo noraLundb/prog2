@@ -12,7 +12,7 @@ import math as m
 import concurrent.futures as future
 from statistics import mean 
 from time import perf_counter as pc
-from numba import njit
+#from numba import njit
 
 # Exc1
 def approximate_pi(n):
@@ -68,7 +68,7 @@ def hypersphere_exact(n, d):
     V_dr = (m.pi**(d/2))/(m.gamma((d/2) + 1))
     return V_dr
 
-
+'''
 #Exc3: numba version
 @njit
 def sphere_volume_numba(n:int, d:int)->float:
@@ -85,7 +85,7 @@ def sphere_volume_numba(n:int, d:int)->float:
         if summa <= 1:
             n_c += 1
     return 2**d * n_c / n
-                
+'''                
 
 
 #Exc4: parallel code - parallelize actual computations by splitting data
@@ -134,11 +134,11 @@ def main():
         print(f"Exc3: Sequential time of {d} and {n}: {stop-start}")
     print("What is numba time?")
 
-    for n in range(1,4):
-        start = pc()
-        sphere_volume_numba(n, d)
-        stop = pc()
-        print(f"Exc3: Numba time of {d} and {n}: {stop-start}")
+   # for n in range(1,4):
+   #     start = pc()
+    #    sphere_volume_numba(n, d)
+    #    stop = pc()
+    #    print(f"Exc3: Numba time of {d} and {n}: {stop-start}")
 
     # Exc4
     n = 1000000
